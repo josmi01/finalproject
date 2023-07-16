@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'font-awesome.min.css' %}">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body style="background-color:white;">
+
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="{% url 'bank:signup' %}">Register</a>
+    <a href="{% url 'bank:login' %}">Login</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Branches
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+       <li><a class="dropdown-item" href="{% url 'bank:home' %}">Our branches</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Ernakulam">Ernakulam</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Palakkad">palakkad</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Thiruvananthapuram">trivandrum</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kozhikodu">kozhikkod</a></li>
+    </div>
+  </div>
+</div>
+<div>
+    <center><img class="my_image my_image_padding" src="{% static 'img/banner.png' %}" alt="Our Branches" width="1250px" height="400px"></center>
+</div>
+<br>
+<div>
+    <h1 class="text-center my_title">CentralBank</h1>
+
+    <p class="text-justify">"Welcome to the Themes team!
+We are a group of volunteers who review and approve themes submitted to be included in the official WordPress Theme directory..As YES BANK accelerates along its transformational journey, its strategic focus on sustainable growth will develop and drive liability franchises and strengthen its asset business with strong governance and compliance as well as prudent risk management. To further develop these objectives, the Wholesale Banking Group continues to play a key and pivotal role for the Bank"</p>
+
+</div>
+</body>
+</html>

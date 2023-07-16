@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+      <style>
+          .bg-img {
+  /* The image used */
+  background-image: url({% static "img/backpic.jpg" %});
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+      </style>
+    <title>Title</title>
+     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+
+  </head>
+ <body>
+
+
+
+
+    {% block content %}
+
+    {% endblock %}
+
+    <script src="{% static 'js/slim.min.js' %}"></script>
+    <script src="{% static 'popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+
+  </body>
+</html>

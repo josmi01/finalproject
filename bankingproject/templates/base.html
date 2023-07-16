@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+var subjectObject = {
+  "Kerala": {
+
+     "palakkad": ["alathur", "kuzhalmandam", "vadakkencherry"],
+     "ernakulam": ["aluva", "vyttila", "palarivattom", "hycourt"],
+     "kozhikkod": ["ramanattukara", "university"],
+     "trivandrum": ["kadappakkada", "aattingal"],
+     "Trissur": ["kunnamkulam", "chavakkad"]
+  },
+  "Thamilnadu": {
+    "selam": ["trichi", "karoor", "Ahjjj"],
+    "erode": ["palayam", "agra", "dekjj"]
+  }
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("district");
+  var chapterSel = document.getElementById("branch");
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    chapterSel.length = 1;
+    topicSel.length = 1;
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+    //empty Chapters dropdown
+    chapterSel.length = 1;
+    //display correct values
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+</script>
+
+
+
+</head>
+<body>
+<h1>Create Your Account</h1>
+<form  name="form1" id="form1" position="center" action="" style="background-color:#E6E6FA;  background-image:url({% static 'images/backpic.jpg' %})" method="post">
+    {% csrf_token %}
+    <div class="">
+         <fieldset data-role="controlgroup">
+     <label for="name">Name:</label><br>
+     <input type="text" name="name" placeholder="enter your name"><br>
+      </fieldset>
+    </div>
+    <div class="form-group">
+         <fieldset data-role="controlgroup">
+
+    <label for="date_of_birth">Date Of Birth:</label><br>
+    <input type="date" name="date_of_birth" placeholder="enter your date of birth"><br>
+     </fieldset>
+    </div>
+    <div class="form-group">
+         <fieldset data-role="controlgroup">
+    <label for="Age">Age:</label><br>
+    <input type="number" name="age" placeholder="enter your age"><br>
+     </fieldset>
+    </div>
+     <div class="form-group">
+
+     <fieldset data-role="controlgroup">
+      <legend>Choose your gender:</legend>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male" checked>
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female">
+      </fieldset>
+    </div>
+    <div class="form-group">
+         <fieldset data-role="controlgroup">
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" placeholder="enter your email address"><br>
+     </fieldset>
+    </div>
+     <div class="form-group">
+    <fieldset data-role="controlgroup">
+     <label for="address">Address:</label><br>
+    <input type="text" name="address" placeholder="enter your address"><br>
+     </fieldset>
+    </div>
+    <div class="form-group">
+    <fieldset data-role="controlgroup">
+
+State: <select name="subject" id="subject">
+    <option value="" selected="selected">Select state</option>
+  </select>
+  <br><br>
+District: <select name="district" id="district">
+    <option value="" selected="selected">Please select district first</option>
+  </select>
+  <br><br>
+Branch: <select name="branch" id="branch">
+    <option value="" selected="selected">Please select branch first</option>
+  </select>
+  <br><br>
+    </fieldset>
+    </div>
+      <div class="form-group">
+           <fieldset data-role="controlgroup">
+    <label for="type">Choose your account type:</label>
+
+   <select name="account_type" id="account_type">
+   <option value="savings">saving</option>
+    <option value="current">current</option>
+
+     </select>
+      </fieldset>
+      </div>
+         <div class="form-group">
+     <fieldset data-role="controlgroup">
+      <legend>Choose your meterial:</legend>
+        <label for="credit">creditcard</label>
+        <input type="checkbox" name="materials" id="materials" value="credit" checked>
+        <label for="debit">debitcard</label>
+        <input type="checkbox" name="meterials" id="materials" value="debit">
+      </fieldset>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+    <br>
+ </form>
+ <p class="text-center">logout your account?<a href="{% url 'bank:home' %}">logout</a>.</p>
+
+<!--<form align="right" name="form1" method="post" action="">-->
+<!--    {% csrf_token %}-->
+<!--  <label class="logoutLblPos">-->
+<!--  <input name="submit2" type="submit" id="submit2" value="log out">-->
+<!--  </label>-->
+<!--</form>-->
+
+
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+
+</body>
+</html>
